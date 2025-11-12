@@ -1,29 +1,28 @@
-/* Fundo e fontes */
-/* ======== ESTILO GERAL ======== */
 body {
     background-color: rgb(212, 130, 130);
     font-family: "Story Script", sans-serif;
     margin: 0;
-    padding: 0;
+    padding-bottom: 3rem;
 }
 
-/* ======== RODAPÉ ======== */
+/* Rodapé */
 footer {
     background-color: rgb(145, 10, 10);
     color: rgb(231, 74, 74);
     position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
     height: 2rem;
 }
 
 footer p {
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     margin-top: 0.4rem;
 }
 
-/* ======== CONTAINER DOS CARTÕES ======== */
+/* Container principal */
 #container {
     display: flex;
     flex-wrap: wrap;
@@ -32,95 +31,85 @@ footer p {
     gap: 2rem;
 }
 
-/* ======== CARTÃO ======== */
+/* Cartões */
 .cartao {
-    background-color: rgba(145, 10, 10, 0.74);
-    width: 300px;
+    background-color: transparent;
+    width: 280px;
     height: 400px;
     perspective: 1000px;
-    border-radius: 1rem;
 }
 
-/* ======== CONTEÚDO DO CARTÃO ======== */
+/* Conteúdo interno */
 .cartao_conteudo {
     position: relative;
     width: 100%;
     height: 100%;
-    background-color: azure;
     text-align: center;
-    border-radius: 1rem;
     transform-style: preserve-3d;
-    transition: transform 0.6s ease;
+    transition: transform 0.8s;
 }
 
-/* Efeito de virar o cartão */
-.cartao:hover .cartao_conteudo {
+/* Efeito de virar */
+.cartao:hover .cartao_conteudo,
+.cartao.virado .cartao_conteudo {
     transform: rotateY(180deg);
 }
 
-/* ======== TÍTULO ======== */
-.cartao_conteudo h3 {
-    color: rgb(88, 50, 50);
-    background-color: #fff;
-    border: 1px solid #333;
-    border-radius: 0.6rem;
-    padding: 0.3rem 0.8rem;
-    font-size: 1.2rem;
-    margin: 1rem auto;
-    width: fit-content;
-    position: relative;
-}
-
-/* ======== PERGUNTA E RESPOSTA ======== */
-.cartao_conteudo_pergunta,
-.cartao_conteudo_resposta {
+/* Frente e verso */
+.frente,
+.verso {
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 1.5rem;
-    box-sizing: border-box;
-    border-radius: 1rem;
 }
 
-/* Frente (pergunta) */
-.cartao_conteudo_pergunta {
-    background-color: rgba(145, 10, 10, 0.74);
-    color: #fff;
-    font-weight: 600;
+/* Frente */
+.frente {
+    background-color: rgb(145, 10, 10);
+    color: white;
+}
+
+.frente h3 {
+    background-color: white;
+    color: rgb(88, 50, 50);
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 0.3rem 0.8rem;
     font-size: 1.2rem;
+    margin-bottom: 1rem;
 }
 
-/* Verso (resposta) */
-.cartao_conteudo_resposta {
+.frente p {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+/* Verso */
+.verso {
     background-color: #eeb1b4;
-    border: 4px solid #000;
-    color: #000;
-    font-weight: 700;
-    font-size: 1rem;
+    color: black;
     transform: rotateY(180deg);
+    font-size: 1rem;
+    padding: 2rem;
 }
 
-/* ======== RESPONSIVIDADE ======== */
-@media (max-width: 768px) {
+/* Responsivo */
+@media (max-width: 560px) {
     #container {
-        padding: 2rem;
+        flex-direction: column;
+        align-items: center;
     }
 
     .cartao {
         width: 90%;
         height: 350px;
-    }
-
-    .cartao_conteudo h3 {
-        font-size: 1rem;
-    }
-
-    .cartao_conteudo_pergunta p,
-    .cartao_conteudo_resposta p {
-        font-size: 0.9rem;
     }
 }
