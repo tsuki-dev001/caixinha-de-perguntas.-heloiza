@@ -1,8 +1,13 @@
+/* Fundo e fontes */
+/* ======== ESTILO GERAL ======== */
 body {
     background-color: rgb(212, 130, 130);
     font-family: "Story Script", sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
+/* ======== RODAPÉ ======== */
 footer {
     background-color: rgb(145, 10, 10);
     color: rgb(231, 74, 74);
@@ -14,99 +19,108 @@ footer {
 
 footer p {
     text-align: center;
-    font: 0.6rem;
-    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    margin-top: 0.4rem;
 }
 
-#container{
+/* ======== CONTAINER DOS CARTÕES ======== */
+#container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     padding: 4rem;
-    gap: 3rem;
+    gap: 2rem;
 }
 
-.cartão{
-    margin: 1rem 1rem;
+/* ======== CARTÃO ======== */
+.cartao {
     background-color: rgba(145, 10, 10, 0.74);
-    height: 75rem;
-    flex-grow: 1 0 calc(100% - 1rem);
-    flex-basis: calc(33%- 6rem);
+    width: 300px;
+    height: 400px;
+    perspective: 1000px;
+    border-radius: 1rem;
 }
 
-.cartão-conteudo {
-    text-align: center;
-    background-color: azure;
+/* ======== CONTEÚDO DO CARTÃO ======== */
+.cartao_conteudo {
+    position: relative;
+    width: 100%;
     height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 300ms ease-in-out;
-}
-
-.cartão-conteudo h3{
-    color: rgb(88, 50, 50);
-    border: 1px ssolid var(--text-color);
-    text-align: left;
-    padding: 0.5rem;
-    position:absolute;
-    margin: 0.6rem;
-    border-radius: 0.6rem;
-    font-size: 3vw;
-    backface-visibility: hidden;
-}
-
-:root {
-    --text-color: #DBE4EF;
-    --card-front-color: #144480;
-    --card-back-color: #000000;
-}
-
-.cartão-conteudo_pergunta p {
-    color: var(--text-color);
-    font-weight: 500;
+    background-color: azure;
     text-align: center;
-align-items: center;
-
+    border-radius: 1rem;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
 }
 
-.cartão_conteudo_resposta p {
-color: var(--card-back-color);
-font-weight: 700;
-margin-top: 4rem;
-font-size: 2.2vw;
-text-align: center;
-align-items: center;
-}
-
-.cartão:hover .cartão-conteudo {
+/* Efeito de virar o cartão */
+.cartao:hover .cartao_conteudo {
     transform: rotateY(180deg);
 }
 
-.cartão-conteudo_pergunta, .cartão-conteudo_resposta {
-    backface-visibility: hidden;
+/* ======== TÍTULO ======== */
+.cartao_conteudo h3 {
+    color: rgb(88, 50, 50);
+    background-color: #fff;
+    border: 1px solid #333;
+    border-radius: 0.6rem;
+    padding: 0.3rem 0.8rem;
+    font-size: 1.2rem;
+    margin: 1rem auto;
+    width: fit-content;
+    position: relative;
+}
+
+/* ======== PERGUNTA E RESPOSTA ======== */
+.cartao_conteudo_pergunta,
+.cartao_conteudo_resposta {
     position: absolute;
-    height: 100%;
     width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
     box-sizing: border-box;
-    text-align: center;
-align-items: center;
+    border-radius: 1rem;
 }
 
-.cartão-conteudo_resposta{
-    transition: rotateY(180deg);
+/* Frente (pergunta) */
+.cartao_conteudo_pergunta {
+    background-color: rgba(145, 10, 10, 0.74);
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+/* Verso (resposta) */
+.cartao_conteudo_resposta {
     background-color: #eeb1b4;
-    border: 4px solid var(--card-back-color);
-    text-align: center;
+    border: 4px solid #000;
+    color: #000;
+    font-weight: 700;
+    font-size: 1rem;
+    transform: rotateY(180deg);
 }
 
-.cartão-conteudo p {
-    margin: 1rem;
-    padding: 2rem;
-   margin-top: 4rem;
-    font-size: 2.8vw;
-}
+/* ======== RESPONSIVIDADE ======== */
+@media (max-width: 768px) {
+    #container {
+        padding: 2rem;
+    }
 
-@media (max-width: 560px){
-    body{
-        background: url();
+    .cartao {
+        width: 90%;
+        height: 350px;
+    }
+
+    .cartao_conteudo h3 {
+        font-size: 1rem;
+    }
+
+    .cartao_conteudo_pergunta p,
+    .cartao_conteudo_resposta p {
+        font-size: 0.9rem;
     }
 }
